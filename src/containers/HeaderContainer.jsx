@@ -30,6 +30,7 @@ import {
 	closeDrawer,
 	selectHeaderState,
 } from "../redux/headerSlice";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -113,6 +114,10 @@ const useStyles = makeStyles((theme) => ({
 			display: "none",
 		},
 	},
+	link: {
+		textDecoration: "none",
+		color: "black",
+	},
 }));
 
 export default function HeaderComponent() {
@@ -122,7 +127,6 @@ export default function HeaderComponent() {
 	const theme = useTheme();
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-	// const [open, setOpen] = React.useState(false);
 
 	const isMenuOpen = Boolean(anchorEl);
 	const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -143,14 +147,6 @@ export default function HeaderComponent() {
 	const handleMobileMenuOpen = (event) => {
 		setMobileMoreAnchorEl(event.currentTarget);
 	};
-
-	// const handleDrawerOpen = () => {
-	// 	setOpen(true);
-	// };
-
-	// const handleDrawerClose = () => {
-	// 	setOpen(false);
-	// };
 
 	const menuId = "primary-search-account-menu";
 	const renderMenu = (
@@ -310,8 +306,11 @@ export default function HeaderComponent() {
 				</div>
 				<Divider />
 				<List>
-					{["List", "Map", "My Favourite Courts"].map(
-						(text, index) => (
+					{["List", "Map", "Favourite"].map((text, index) => (
+						<Link
+							to={"/" + text.toLowerCase()}
+							className={classes.link}
+						>
 							<ListItem button key={text}>
 								<ListItemIcon>
 									{index % 2 === 0 ? (
@@ -322,8 +321,8 @@ export default function HeaderComponent() {
 								</ListItemIcon>
 								<ListItemText primary={text} />
 							</ListItem>
-						)
-					)}
+						</Link>
+					))}
 				</List>
 				<Divider />
 				<List>

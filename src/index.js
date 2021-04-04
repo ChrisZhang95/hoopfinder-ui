@@ -5,12 +5,15 @@ import AppContainer from "./AppContainer";
 import store from "./redux/store";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
+import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Provider store={store}>
-			<AppContainer />
-		</Provider>
+		<Router>
+			<Provider store={store}>
+				<AppContainer />
+			</Provider>
+		</Router>
 	</React.StrictMode>,
 	document.getElementById("root")
 );
