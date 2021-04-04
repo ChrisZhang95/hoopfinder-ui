@@ -18,6 +18,21 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+const location = {
+	address: "1101 Bay Street",
+	city: "Toronto",
+	province: "ON",
+	country: "Canada",
+	name: "YMCA",
+	hours: "24 hours",
+	access: "public",
+	type: "outdoor",
+	hoopCount: 4,
+	imageUrls: [
+		"https://i.pinimg.com/originals/2f/ea/e3/2feae37441231bd364465a71a401403f.png",
+	],
+};
+
 export default function ListViewContainer() {
 	const classes = useStyles();
 	return (
@@ -26,7 +41,7 @@ export default function ListViewContainer() {
 				<Grid container justify="center" spacing={4}>
 					{new Array(20).fill(0).map((value) => (
 						<Grid key={value} item>
-							<CourtCardComponent />
+							<CourtCardComponent location={location} />
 						</Grid>
 					))}
 				</Grid>
