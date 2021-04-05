@@ -5,6 +5,7 @@ export const headerSlice = createSlice({
 	initialState: {
 		drawerOpened: false,
 		drawerWidth: 0,
+		newCourtWizardOpened: false,
 	},
 	reducers: {
 		openDrawer: (state, action) => {
@@ -15,9 +16,20 @@ export const headerSlice = createSlice({
 			state.drawerOpened = false;
 			state.drawerWidth = action.payload;
 		},
+		openNewCourtWizard: (state) => {
+			state.newCourtWizardOpened = true;
+		},
+		closeNewCourtWizard: (state) => {
+			state.newCourtWizardOpened = false;
+		},
 	},
 });
 
-export const { openDrawer, closeDrawer } = headerSlice.actions;
+export const {
+	openDrawer,
+	closeDrawer,
+	openNewCourtWizard,
+	closeNewCourtWizard,
+} = headerSlice.actions;
 export const selectHeaderState = (state) => state.header;
 export default headerSlice.reducer;

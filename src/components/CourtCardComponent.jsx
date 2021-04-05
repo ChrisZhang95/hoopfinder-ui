@@ -43,7 +43,6 @@ export default function CourtCardComponent(props) {
 	return (
 		<Card className={classes.root}>
 			<CardActionArea>
-				{/* {renderImage(images)} */}
 				<CardMedia
 					className={classes.media}
 					image={imageUrls ? imageUrls[0] : noImageUrl}

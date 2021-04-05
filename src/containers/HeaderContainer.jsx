@@ -24,13 +24,16 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
+import AddIcon from "@material-ui/icons/Add";
 import { useSelector, useDispatch } from "react-redux";
 import {
 	openDrawer,
 	closeDrawer,
+	openNewCourtWizard,
 	selectHeaderState,
 } from "../redux/headerSlice";
 import { Link } from "react-router-dom";
+import { Tooltip } from "@material-ui/core";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -122,7 +125,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function HeaderComponent() {
 	const headerState = useSelector(selectHeaderState);
-	const dispath = useDispatch();
+	const dispatch = useDispatch();
 	const classes = useStyles();
 	const theme = useTheme();
 	const [anchorEl, setAnchorEl] = React.useState(null);
@@ -222,7 +225,7 @@ export default function HeaderComponent() {
 						className={classes.menuButton}
 						color="inherit"
 						aria-label="open drawer"
-						onClick={() => dispath(openDrawer(drawerWidth))}
+						onClick={() => dispatch(openDrawer(drawerWidth))}
 					>
 						<MenuIcon />
 					</IconButton>
@@ -244,22 +247,15 @@ export default function HeaderComponent() {
 					</div>
 					<div className={classes.grow} />
 					<div className={classes.sectionDesktop}>
-						{/* <IconButton
-							aria-label="show 4 new mails"
-							color="inherit"
-						>
-							<Badge badgeContent={4} color="secondary">
-								<MailIcon />
-							</Badge>
-						</IconButton> */}
-						<IconButton
-							aria-label="show 17 new notifications"
-							color="inherit"
-						>
-							<Badge badgeContent={0} color="secondary">
-								<NotificationsIcon />
-							</Badge>
-						</IconButton>
+						<Tooltip title="Report new court" placement="top-start">
+							<IconButton
+								aria-label="add new court"
+								color="inherit"
+								onClick={() => dispatch(openNewCourtWizard())}
+							>
+								<AddIcon />
+							</IconButton>
+						</Tooltip>
 						<IconButton
 							edge="end"
 							aria-label="account of current user"
@@ -295,7 +291,7 @@ export default function HeaderComponent() {
 			>
 				<div className={classes.drawerHeader}>
 					<IconButton
-						onClick={() => dispath(closeDrawer(drawerWidth))}
+						onClick={() => dispatch(closeDrawer(drawerWidth))}
 					>
 						{theme.direction === "ltr" ? (
 							<ChevronLeftIcon />

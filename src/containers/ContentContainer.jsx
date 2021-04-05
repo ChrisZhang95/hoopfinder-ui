@@ -1,12 +1,15 @@
 import React from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
-import { useSelector } from "react-redux";
-import { selectHeaderState } from "../redux/headerSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { closeNewCourtWizard, selectHeaderState } from "../redux/headerSlice";
+import CourtWizardComponent from "../components/CourtWizardComponent";
 import ListViewContainer from "./ListViewContainer";
 import { Switch, Route, Redirect } from "react-router-dom";
+
 export default function ContentContainer() {
 	const headerState = useSelector(selectHeaderState);
+	const dispatch = useDispatch();
 	const useStyle = makeStyles((theme) => ({
 		content: {
 			width: "100%",
@@ -34,6 +37,11 @@ export default function ContentContainer() {
 				</Route>
 				<Route path="/list" component={ListViewContainer} />
 			</Switch>
+
+			<CourtWizardComponent
+				open={headerState.newCourtWizardOpened}
+				closeWizard={() => dispatch(closeNewCourtWizard())}
+			/>
 		</div>
 	);
 }
