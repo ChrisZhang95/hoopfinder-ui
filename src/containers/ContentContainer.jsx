@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector, useDispatch } from "react-redux";
-import { closeNewCourtWizard, selectHeaderState } from "../redux/headerSlice";
+import { closeCourtWizard, selectHeaderState } from "../redux/headerSlice";
 import CourtWizardComponent from "../components/CourtWizardComponent";
 import ListViewContainer from "./ListViewContainer";
 import { Switch, Route, Redirect } from "react-router-dom";
@@ -39,8 +39,8 @@ export default function ContentContainer() {
 			</Switch>
 
 			<CourtWizardComponent
-				open={headerState.newCourtWizardOpened}
-				closeWizard={() => dispatch(closeNewCourtWizard())}
+				open={headerState.courtWizardOpened}
+				closeWizard={() => dispatch(closeCourtWizard())}
 			/>
 		</div>
 	);

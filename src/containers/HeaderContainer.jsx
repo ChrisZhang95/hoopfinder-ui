@@ -29,7 +29,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
 	openDrawer,
 	closeDrawer,
-	openNewCourtWizard,
+	openCourtWizard,
 	selectHeaderState,
 } from "../redux/headerSlice";
 import { Link } from "react-router-dom";
@@ -251,7 +251,7 @@ export default function HeaderComponent() {
 							<IconButton
 								aria-label="add new court"
 								color="inherit"
-								onClick={() => dispatch(openNewCourtWizard())}
+								onClick={() => dispatch(openCourtWizard())}
 							>
 								<AddIcon />
 							</IconButton>

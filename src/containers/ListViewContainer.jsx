@@ -23,10 +23,24 @@ const location = {
 	city: "Toronto",
 	province: "ON",
 	country: "Canada",
-	name: "YMCA",
 	hours: "24 hours",
-	access: "public",
-	type: "outdoor",
+	access: "Public",
+	type: "Outdoor",
+	hoopCount: 4,
+	imageUrls: [
+		"https://i.pinimg.com/originals/2f/ea/e3/2feae37441231bd364465a71a401403f.png",
+	],
+};
+
+const location1 = {
+	address: "1101 Bay Street",
+	city: "Toronto",
+	province: "ON",
+	country: "Canada",
+	hours: "24 hours",
+	access: "Public",
+	name: "YMCA",
+	type: "Outdoor",
 	hoopCount: 4,
 	imageUrls: [
 		"https://i.pinimg.com/originals/2f/ea/e3/2feae37441231bd364465a71a401403f.png",

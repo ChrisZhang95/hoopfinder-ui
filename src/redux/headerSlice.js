@@ -5,7 +5,8 @@ export const headerSlice = createSlice({
 	initialState: {
 		drawerOpened: false,
 		drawerWidth: 0,
-		newCourtWizardOpened: false,
+		courtWizardOpened: false,
+		courtWizardInfo: null,
 	},
 	reducers: {
 		openDrawer: (state, action) => {
@@ -16,11 +17,12 @@ export const headerSlice = createSlice({
 			state.drawerOpened = false;
 			state.drawerWidth = action.payload;
 		},
-		openNewCourtWizard: (state) => {
-			state.newCourtWizardOpened = true;
+		openCourtWizard: (state, action) => {
+			state.courtWizardOpened = true;
+			state.courtWizardInfo = action.payload;
 		},
-		closeNewCourtWizard: (state) => {
-			state.newCourtWizardOpened = false;
+		closeCourtWizard: (state) => {
+			state.courtWizardOpened = false;
 		},
 	},
 });
@@ -28,8 +30,8 @@ export const headerSlice = createSlice({
 export const {
 	openDrawer,
 	closeDrawer,
-	openNewCourtWizard,
-	closeNewCourtWizard,
+	openCourtWizard,
+	closeCourtWizard,
 } = headerSlice.actions;
 export const selectHeaderState = (state) => state.header;
 export default headerSlice.reducer;

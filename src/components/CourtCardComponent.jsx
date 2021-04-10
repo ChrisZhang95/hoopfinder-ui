@@ -9,6 +9,8 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import { useDispatch } from "react-redux";
+import { openCourtWizard } from "../redux/headerSlice";
 
 const useStyles = makeStyles({
 	root: {
@@ -24,6 +26,7 @@ const useStyles = makeStyles({
 });
 
 export default function CourtCardComponent(props) {
+	const dispatch = useDispatch();
 	const classes = useStyles();
 	const noImageUrl =
 		"https://causeofaction.org/wp-content/uploads/2013/09/Not-available.gif";
@@ -41,7 +44,10 @@ export default function CourtCardComponent(props) {
 	} = props.location;
 
 	return (
-		<Card className={classes.root}>
+		<Card
+			className={classes.root}
+			onClick={() => dispatch(openCourtWizard(props.location))}
+		>
 			<CardActionArea>
 				<CardMedia
 					className={classes.media}
@@ -52,6 +58,15 @@ export default function CourtCardComponent(props) {
 					<Typography gutterBottom variant="h5" component="h2">
 						{address}
 					</Typography>
+					{name ? (
+						<Typography
+							gutterBottom
+							variant="subtitle2"
+							component="h2"
+						>
+							{name}
+						</Typography>
+					) : null}
 					<Typography gutterBottom variant="subtitle2" component="h2">
 						{city + " " + province + ", " + country}
 					</Typography>
